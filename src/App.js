@@ -1,3 +1,4 @@
+import "bootswatch/dist/cyborg/bootstrap.min.css";
 import './App.css';
 import React, { useEffect, useState } from "react";
 import socketIOClient from "socket.io-client";
@@ -36,25 +37,33 @@ function App() {
   return (
     <Router>
       <div className="App">
-        <h1>RPS Online</h1>
-        <h1>Logged In As: {user.username}</h1>
-        <div>
-          <Leaderboard />
+        <div className="top-bar">
+          <h1>RPS Online</h1>
+          <h4>
+            { user.username
+            ? user.username
+            : "Not Logged In"
+            }
+          </h4>
         </div>
-        <Switch>
-          <Route path="/" exact>
-            <Home user={user} />
-          </Route>
-          <Route path="/game" exact>
-            <JoinOrCreate socket={socket} roomCode={roomCode}/>
-          </Route>
-          <Route path="/login" exact>
-            <Login setUser={updateUser}/>
-          </Route>
-          <Route path="/game/:id">
-            <Game socket={socket} roomCode={roomCode} socketID={socketID} user={user} />
-          </Route>
-        </Switch>
+        <div className="Main-Row">
+          <Leaderboard className="leaderboard"/>
+          <Switch className="Game">
+            <Route path="/" exact>
+              <Home user={user} />
+            </Route>
+            <Route path="/game" exact>
+              <JoinOrCreate socket={socket} roomCode={roomCode}/>
+            </Route>
+            <Route path="/login" exact>
+              <Login setUser={updateUser}/>
+            </Route>
+            <Route path="/game/:id">
+              <Game socket={socket} roomCode={roomCode} socketID={socketID} user={user} />
+            </Route>
+          </Switch>
+          <div className="empty"></div>
+        </div>
       </div>
     </Router>
   );

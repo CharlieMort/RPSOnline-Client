@@ -18,7 +18,7 @@ const Leaderboard = () => {
 
     return(
         <div>
-            <h1>Leaderboard</h1>
+            <h3>Leaderboard</h3>
             <ol>
                 {users.map((user) => {
                     return <li key={user._id}>{user.username}: {user.score}</li>

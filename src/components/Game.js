@@ -3,10 +3,19 @@ import axios from "axios";
 
 const Buttons = ({callback}) => {
     return(
-        <div>
-            <input type="button" value="Rock" onClick={callback} />
-            <input type="button" value="Paper" onClick={callback} />
-            <input type="button" value="Scissors" onClick={callback} />
+        <div className="options">
+            <div className="flex-col">
+                <input className="btn btn-outline-primary" type="button" value="✊" onClick={callback} />
+                <h5>Rock</h5>
+            </div>
+            <div className="flex-col">
+                <input className="btn btn-outline-primary" type="button" value="✋" onClick={callback} />
+                <h5>Paper</h5>
+            </div>
+            <div className="flex-col">
+                <input className="btn btn-outline-primary" type="button" value="✌️" onClick={callback} />
+                <h5>Scissors</h5>
+            </div>
         </div>
     )
 }
@@ -15,7 +24,7 @@ const Win = ({winner, restart}) => {
     return(
         <div>
             <h1>{winner}</h1>
-            <button onClick={restart}>Restart?</button>
+            <button className="btn btn-outline-primary" onClick={restart}>Restart?</button>
         </div>
     )
 }
@@ -75,8 +84,8 @@ const Game = ( {socket, roomCode, socketID, user} ) => {
     }
 
     return (
-        <div>
-            <h1>Your Room Code Is:{roomCode}</h1>
+        <div className="game-window">
+            <h4>Your Room Code Is: {roomCode}</h4>
             {
             choice === ""
             ? <Buttons callback={pickChoice}/>

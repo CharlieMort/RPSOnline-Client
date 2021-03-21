@@ -20,10 +20,17 @@ const JoinOrCreate = ({socket, roomCode}) => {
     }
 
     return(
-        <div>
-            <button onClick={JoinRoom}>Join Room</button>
-            <input type="text" placeholder="Room Code..." value={joinCode} onChange={(e) => setJoinCode(e.target.value)}></input>
-            <button onClick={CreateRoom}>Create Room</button>
+        <div className="join-create">
+            <div>
+                <button className="btn btn-primary" onClick={CreateRoom}>Create Game</button>
+            </div>
+            <div>
+                <h5>Or</h5>
+            </div>
+            <div>
+                <input className="form-control" type="text" placeholder="Room Code..." value={joinCode} onChange={(e) => setJoinCode(e.target.value)}></input>
+                <button className="btn btn-primary" onClick={JoinRoom}>Join Game</button>
+            </div>
         </div>
     )
 }
