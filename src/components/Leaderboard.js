@@ -5,9 +5,8 @@ const Leaderboard = () => {
     const [users, setUsers] = useState([]);
 
     const GetLeaderboard = () => {
-        axios.get("http://localhost:5000/users/leaderboard")
+        axios.get("/api/users/leaderboard")
             .then(res => {
-                console.log(res.data);
                 setUsers(res.data);
             })
     }

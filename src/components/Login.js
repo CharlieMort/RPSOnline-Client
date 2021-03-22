@@ -17,25 +17,21 @@ const Login = ({setUser}) => {
             password
         };
 
-        axios.post("http://localhost:5000/users/add", newUser)
+        axios.post("/api/users/add", newUser)
             .then(res => {
-                console.log(res.data);
                 setSignedUp(true);
             })
             .catch((err) => setError(err));
     }
 
     function SignIn() {
-        console.log("Singing In");
-
         const user = {
             username,
             password
         }
 
-        axios.post("http://localhost:5000/users/login", user)
+        axios.post("/api/users/login", user)
             .then(res => {
-                console.log(res.data);
                 setUser(res.data);
                 setLoggedIn(true);
             })
@@ -48,7 +44,7 @@ const Login = ({setUser}) => {
 
     return(
         <div>
-            {error ? <h2>:o Looks Like Someone Already Has That Username :( Try Again</h2>
+            {error ? <h4>Looks Like Someone Already Has That Username :( Try Again</h4>
             : null
             }
             <form>

@@ -23,16 +23,12 @@ function App() {
 
   useEffect(() => {
     socket.on("room_join", (data) => {
-      console.log(data);
       setRoomCode(data);
     });
     socket.on("socketInfo", (data) => {
-      console.log(data);
       setSocketID(data);
     })
   }, []);
-
-  console.log(user);
 
   return (
     <Router>

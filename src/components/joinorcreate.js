@@ -5,12 +5,10 @@ const JoinOrCreate = ({socket, roomCode}) => {
     const [joinCode, setJoinCode] = useState("");
 
     const CreateRoom = () => {
-        console.log("Creating Room");
         socket.emit("create_room");
     }
     
     const JoinRoom = () => {
-        console.log("Joining Room");
         socket.emit("join_room", joinCode);
     }
 

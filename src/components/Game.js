@@ -57,11 +57,9 @@ const Game = ( {socket, roomCode, socketID, user} ) => {
 
     useEffect(() => {
         socket.on("winner", (data) => {
-            console.log(data);
             setWinner(data);
-            if (data == socketID) {
-                axios.post(`http://localhost:5000/users/addscore/${user._id}`)
-                    .then(res => console.log(res))
+            if (data === socketID) {
+                axios.post(`/api/users/addscore/${user._id}`)
                     .catch(err => console.log(err));
             }
         })
@@ -73,7 +71,6 @@ const Game = ( {socket, roomCode, socketID, user} ) => {
 
     const pickChoice = (e) => {
         setChoice(e.target.value);
-        console.log(e.target.value);
         socket.emit("choose", e.target.value, roomCode);
     }
 
